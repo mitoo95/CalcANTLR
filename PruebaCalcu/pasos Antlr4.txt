@@ -1,0 +1,24 @@
+usar en folder de proyecto: export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"
+
+antlr4 "Nombre de .g4"
+
+javac *.java
+
+grun "nombre de .g4 sin extension(LabeledExpr)" prog
+(-tokens prints out the token stream)
+(-tree prints out the parse tree in LISP form)
+(-gui displays the parse tree visually in a dialog box)
+(-ps file.ps generates a visual representation of the parse tree in PostScript and
+stores it in file.ps. The parse tree figures in this chapter were generated
+with -ps)
+(-encoding encodingname specifies the test rig input file encoding if the current
+locale would not read the input properly.)
+(-trace prints the rule name and current token upon rule entry and exit)
+(-diagnostics turns on diagnostic messages during parsing)
+(-SLL uses a faster but slightly weaker parsing strategy)
+
+compile and run program: 
+antlr4 -no-listener -visitor LabeledExpr.g4 # -visitor is required!!!
+javac Calc.java LabeledExpr*.java
+java Calc t.expr
+run program tree: grun LabeledExpr prog -gui t.expr
